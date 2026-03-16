@@ -11,6 +11,9 @@ governing equations to be populated
 to be populated
 
 ### Results
+Below is a plot of a single particle trajectory. The left subplot shows the trajectory in 3D space, where is traces a helical path as it bounces between the mirror coils (located at z = ±1 m). The right subplot shows the z position of the particle as a function of time. This plot shows a strong oscillating motion as this particle is confined and reflected in the magnetic mirror.
+![Single particle trajectory](figures/single_sim_Rm2_theta50.png)
+
 Below are plots showing the loss cone for mirror ratios of 1.5, 2, 3, 5, and 10. Each plot shows escaped vs reflected particles as a function of pitch angle. The step in simulation outcome being located at the analytic critical angle confirms the simulation is correctly identifying the loss cone boundary.
 
 Rm = 1.5:
