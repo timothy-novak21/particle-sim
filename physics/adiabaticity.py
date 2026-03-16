@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def invariance_check(v0,mirror,CONST):
     """
     Calculate the adiabaticity parameter and check invariance for a magnetic mirror
@@ -20,18 +21,23 @@ def invariance_check(v0,mirror,CONST):
     epsilon : scalar
         Adiabaticity parameter that is used to determine if the B field is adiabatically invariant, unitless
 
-    invariant : boolean
-        Stores True if the B field is invariant (epsilon << 1) and False if the field is NOT invariant
+    adiabatic : string
+        Stores level of adiabaticity for plotting
+        "Highly Adiabatic" | "Adiabatic" | "Marginally Adiabatic" | "Non-Adiabatic"
     """
 
-    invariant = False
-
     r_L = (CONST.m * v0) / (CONST.q * mirror.Bmax) # Larmor radius at mirror point [m]
-    dBz_dz = 2 * (mirror.Bmax - mirror.Bmin) / mirror.length # field gradient magnitude at mirror boundary
+    dBz_dz = 2 * (mirror.Bmax - mirror.Bmin) / mirror.length # field gradient magnitude evaluated at z = length (mirror boundary) [T/m]
     epsilon = r_L * dBz_dz / mirror.Bmax # adiabaticity parameter [-]
 
-    # eps << 1 for adiabaticity to hold
+    # eps << 1 for adiabatic invariance
     if epsilon < 0.01:
-        invariant = True
-
-    return [epsilon,invariant]
+        adiabatic = "Highly Adiabatic"
+    elif epsilon < 0.1:
+        adiabatic = "Adiabatic"
+    elif epsilon < 1.0:
+        adiabatic = "Marginally Adiabatic"
+    else:
+        adiabatic = "Non-Adiabatic"
+        
+    return [epsilon,adiabatic]

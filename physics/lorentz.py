@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def accel(t,state,mirror,CONST):
     """
     Compute the acceleration on a charged particle as a result of Lorentz force
@@ -21,7 +22,7 @@ def accel(t,state,mirror,CONST):
 
     Returns
     -------
-    np.concatenate([vel,a]), shape(6,)
+    delta_state : array, shape (6,)
         Delta state function of the particle subject to Lorentz forces
     """
 
@@ -31,4 +32,7 @@ def accel(t,state,mirror,CONST):
     B_pos = mirror.vector(pos) # B field at particle position [T]
     a = (CONST.q / CONST.m) * np.cross(vel, B_pos) # a = F/m = (q/m)*(E + v X B) [m/s^2]
 
-    return np.concatenate([vel, a])
+    delta_state = np.concatenate([vel, # change in position is the velocity of the particle [m/s]
+                                  a])  # change in velocity is the acceleration of the particle [m/s]
+
+    return delta_state
