@@ -106,7 +106,7 @@ Below is a plot of z excursions over a safety factor sweep. The simulated z excu
 ![Z excursion vs safety factor](figures/excursion.png)
 
 ### Validation
-Across a full pitch angle sweep, the simulation achieved a mean and maximum error of 0.040% and 0.085%, respectively. Linear z excursion scaling with safety factor was also confirmed across a sweep of factors from 1 to 10.
+Across a full pitch angle sweep, the simulation achieved a mean and maximum error of 0.040% and 0.085%, respectively. Linear z excursion scaling with safety factor was also confirmed across a sweep of factors from 1 to 10. ADD NOTE ABOUT LARMOR RADIUS CORRECTION FOR GRAD B DRIFT
 
 ### Limitations
 to be populated
