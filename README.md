@@ -41,19 +41,23 @@ The magnetic moment is an adiabatic invariant, meaning it is only conserved when
 $\varepsilon = \frac{r_L |\nabla \vec{B}|}{B} \ll 1$
 </p>
 
-At the mirror point, the particle velocity must be purely perpendicular to be reflected. Appling conservation of magnetic moment between the center and the mirror boundary gives:
+At the mirror point, the particle velocity must be purely perpendicular to be reflected:
+<p align="center">
+$v_{mirror\perp} = v_0$
+</p>
+Appling conservation of magnetic moment between the center and the mirror boundary gives:
 <p align="center">
 $\frac{mv_{0\perp}^2}{2B_{min}} = \frac{mv_0^2}{2B_{max}}$
 </p>
-For a particle to reflect before escaping, it must have zero parallel velocity before it reaches either end of the mirror. Solving this gives the loss cone condition, the inequality of pitch angles that will reflect and be confined in the mirror. The loss cone condition is:
+Solving this gives the loss cone condition, the inequality of pitch angles that will escape the mirror. The loss cone condition is:
 <p align="center">
 $sin^2\theta < \frac{1}{R_m}$
 </p>
 Where the pitch angle is the angle of the particle velocity vector relative to the magnetic field lines. Solving the above for pitch angle gives:
 <p align="center">
-$\theta = arcsin(\frac{1}{\sqrt{R_m}})$
+$\theta < arcsin(\frac{1}{\sqrt{R_m}})$
 </p>
-The lowest pitch angle that is reflected in a magnetic mirror is the critical pitch angle. It is defined as:
+The lowest pitch angle that is reflected in a magnetic mirror is the critical pitch angle. It is defined as the boundary of the loss cone, or:
 <p align="center">
 $\theta_c = arcsin(\frac{1}{\sqrt{R_m}})$
 </p>
@@ -66,7 +70,7 @@ to be populated
 Below is a plot of a single particle trajectory. The left subplot shows the trajectory in 3D space, where is traces a helical path as it bounces between the mirror coils (located at z = ±1 m). The right subplot shows the z position of the particle as a function of time. This plot shows a strong oscillatory motion as the particle is confined and reflected in the magnetic mirror.
 ![Single particle trajectory](figures/updated_single_sim_Rm2_theta50.png)
 
-Below are plots showing the loss cone for mirror ratios of 1.5, 2, 3, 5, and 10. Each plot shows escaped vs reflected particles as a function of pitch angle ($\theta$). The step in simulation outcome being located very close to the analytic critical pitch angle ($\theta_c$) confirms the simulation is correctly identifying the loss cone boundary. The error in critical pitch angle can be seen at the top of each plot, with the max error being 1.3% for $R_m$ = 10. The sequence of plots also shows that the critical pitch angle decreases as the mirror ratio increases. This visualizes how confinement improves at higher mirror ratios, albiet with diminishing returns.
+Below are plots showing the loss cone for mirror ratios of 1.5, 2, 3, 5, and 10. Each plot shows escaped vs reflected particles as a function of pitch angle ($\theta$). The step in simulation outcome being located very close to the analytic critical pitch angle ($\theta_c$) confirms the simulation is correctly identifying the loss cone boundary. The error in critical pitch angle can be seen at the top of each plot, with the max error being 1.3% for $R_m$ = 10. The sequence of plots also shows that the critical pitch angle decreases as the mirror ratio increases. This visualizes how confinement improves at higher mirror ratios, albeit with diminishing returns.
 
 $R_m$ = 1.5:
 ![Loss cone for Rm=1.5](figures/loss_cone_Rm1.5.png)
