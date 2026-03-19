@@ -31,22 +31,25 @@ In the absence of an electric field, the acceleration of a charged particle can 
 $\vec{a} = \frac{q}{m}(\vec{v} \times \vec{B})$
 </p>
 
-
 The magnetic moment is expressed as:
 <p align="center">
 $\mu = \frac{mv_{\perp}^2}{2B}$
 </p>
 
-Conservation of the magnetic moment holds only when the magnetic field changes slowly over one gyration. The adiabaticity condition is expressed as:
+The magnetic moment is an adiabatic invariant, meaning it is only conserved when the magnetic field changes slowly over one gyration. This can be checked through the adiabaticity condition:
 <p align="center">
-$\varepsilon = \frac{r_L |\nabla B|}{B} \ll 1$
+$\varepsilon = \frac{r_L |\nabla \vec{B}|}{B} \ll 1$
+</p>
 
-
-The loss cone condition is:
+At the mirror point, the particle velocity must be purely perpendicular to be reflected. Appling conservation of magnetic moment between the center and the mirror boundary gives:
+<p align="center">
+$\frac{mv_{0\perp}^2}{2B_{min}} = \frac{mv_0^2}{2B_{max}}$
+</p>
+For a particle to reflect before escaping, it must have zero parallel velocity before it reaches either end of the mirror. Solving this gives the loss cone condition, the inequality of pitch angles that will reflect and be confined in the mirror. The loss cone condition is:
 <p align="center">
 $sin^2\theta < \frac{1}{R_m}$
 </p>
-Solving this for pitch angle gives:
+Where the pitch angle is the angle of the particle velocity vector relative to the magnetic field lines. Solving the above for pitch angle gives:
 <p align="center">
 $\theta = arcsin(\frac{1}{\sqrt{R_m}})$
 </p>
