@@ -32,7 +32,7 @@ $R_m$ = 10:
 ![Loss cone for Rm=10](figures/loss_cone_Rm10.png)
 
 Below is a plot comparing the simulated and analytic critical pitch angles. Close agreement at the simulated mirror ratios further validates simulation accuracy. This plot is also a good visualization of improved confinement at higher mirror ratios.
-![Critical angle vs mirror ratio](figures/crit_curve.png)
+![Critical angle vs mirror ratio](figures/updated_crit_curve.png)
 
 ### Validation
 to be populated
