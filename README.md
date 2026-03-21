@@ -21,6 +21,7 @@ This can then be projected into Cartesian coordinates:
 <p align="center">
 $$\vec{B} = \begin{bmatrix} B_{{x}} \\ B_{{y}} \\ B_{{z}} \end{bmatrix} = \begin{bmatrix} B_r(\frac{x}{R}) \\ B_r(\frac{y}{R}) \\ B_z \end{bmatrix}$$
 </p>
+The radial component of the magnetic field is the physical origin of the mirror force. Without it, particles woudl not reflect regardless of mirror ratio.
 
 The trajectory of a charged particle in such a magnetic field can be found by integrating the Lorentz force. The Lorentz force is expressed as:
 <p align="center">
@@ -66,17 +67,19 @@ This shows that confinement in a magnetic mirror is purely geometric. It depends
 ### Simulation Approach
 To solve for the trajectory of a particle, the simulation numerically integrates the Lorentz force over time. The ODE integrator used is scipy.integrate.solve_ivp running RK45.
 
-The maximum integration timestep is set at 1/200th of a cyclotron period. The time bounds are set to allow a user input number of reflection periods. Integration is ultimately terminated by a set of events. There are events to terminate upon particle escape, particle reflection, and completion of the desired number of reflection periods.
+The maximum integration timestep is set at 1/200th of a cyclotron period. The time bounds are set to allow a set number of reflection periods. Integration is ultimately terminated by a set of events. There are events to terminate upon particle escape, particle reflection, and completion of the desired number of reflection periods.
 
 A sweep across a range of mirror ratios is performed to find the critical pitch angle as a function of the mirror ratio. In order to maintain adiabaticity across this sweep, the length of the mirror is scaled to be longer at higher mirror ratios. Maintaining a fixed mirror length at high mirror ratios produces a steep field gradient that violates the adiabaticity condition. Scaling the length resolves this and ensures that conservation of magnetic moment is a valid assumption.
 
-To solve for the critical pitch angle at a given mirror ratio, 500 angles between 1 and 89 degrees are swept through. The outcome of each simulation is then plotted against the pitch angle. The critical pitch angle is calculated as the midpoint between the last escaped and first reflected partcle. This is then checked against an analytic approximation to determine simulation accuracy.
+To solve for the critical pitch angle at a given mirror ratio, 500 angles between 1 and 89 degrees are swept through. The outcome of each simulation is then plotted against the pitch angle. The critical pitch angle is calculated as the midpoint between the last escaped and first reflected particle. This is then checked against an analytic approximation to determine simulation accuracy.
+
+All simulations use a 5 keV proton which is representative of thermal energies relevant to fusion mirror machines.
 
 ### Results
-Below is a plot of a single particle trajectory. The left subplot shows the trajectory in 3D space, where is traces a helical path as it bounces between the mirror coils (located at z = ±1 m). The right subplot shows the z position of the particle as a function of time. This plot shows a strong oscillatory motion as the particle is confined and reflected in the magnetic mirror.
+Below is a plot of a single particle trajectory. The left subplot shows the trajectory in 3D space, where it traces a helical path as it bounces between the mirror coils (located at z = ±1 m). The right subplot shows the z position of the particle as a function of time. This plot shows a strong oscillatory motion as the particle is confined and reflected in the magnetic mirror.
 ![Single particle trajectory](figures/updated_single_sim_Rm2_theta50.png)
 
-Below are plots showing the loss cone for mirror ratios of 1.5, 2, 3, 5, and 10. Each plot shows escaped vs reflected particles as a function of pitch angle ($\theta$). The step in simulation outcome being located very close to the analytic critical pitch angle ($\theta_c$) confirms the simulation is correctly identifying the loss cone boundary. The error in critical pitch angle can be seen at the top of each plot, with the max error being 1.3% for $R_m$ = 10. The sequence of plots also shows that the critical pitch angle decreases as the mirror ratio increases. This visualizes how confinement improves at higher mirror ratios, albeit with diminishing returns.
+Below are plots showing the loss cone for mirror ratios of 1.5, 2, 3, 5, and 10. Each plot shows escaped vs reflected particles as a function of pitch angle ($\theta$). The step in simulation outcome is located very close to the analytic critical pitch angle ($\theta_c$) and confirms the simulation is correctly identifying the loss cone boundary. The error in critical pitch angle can be seen at the top of each plot, with the max error being 1.3% for $R_m$ = 10. The sequence of plots also shows that the critical pitch angle decreases as the mirror ratio increases. This visualizes how confinement improves at higher mirror ratios, albeit with diminishing returns.
 
 $R_m$ = 1.5:
 ![Loss cone for Rm=1.5](figures/loss_cone_Rm1.5.png)
@@ -97,7 +100,7 @@ Below is a plot comparing the simulated and analytic critical pitch angles. Clos
 ![Critical angle vs mirror ratio](figures/updated_crit_curve.png)
 
 ### Validation
-Below is a table of the mirror ratio sweep with validation metrics. Close agreement is found between the simulated and analytic values for critical pitch angle, with the highest percent error being 1.30% at mirror ratio of 10. Low epsilon values indicate all simulations are well within the adiabatic range and magnetic moment should be conserved. Low percent drift in magnetic moment confirms the simulation is behaving as expected for all mirror ratios. Drift increasing with mirror ratios is due to mirror length being scaled proportionally with mirror ratio. Longer mirrors require longer timespans to determine if particles reflect or escape, resuling in more time for magnetic moment to deviate.
+Below is a table of the mirror ratio sweep with validation metrics. Close agreement is found between the simulated and analytic values for critical pitch angle, with the highest percent error being 1.30% at mirror ratio of 10. Low epsilon values indicate all simulations are well within the adiabatic range and magnetic moment should be conserved. Low percent drift in magnetic moment confirms the numerical integration is conserving the adiabatic invariant as expected for all mirror ratios. Drift increasing with mirror ratios is due to mirror length being scaled proportionally with mirror ratio. Longer mirrors require longer timespans to determine if particles reflect or escape, resuling in more time for magnetic moment to deviate.
 ![Milestone 1 validation table](figures/rm_sweep_results_table.png)
 
 
